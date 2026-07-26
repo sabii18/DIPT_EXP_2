@@ -48,6 +48,8 @@ Resize the frame and rotate it using OpenCV functions, then display the processe
 ### Register No: 212225230234 
 **Date:** 26.07.2026
 
+## Code:
+
 ```python
 import cv2
 cap = cv2.VideoCapture(0)
