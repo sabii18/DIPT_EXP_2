@@ -15,8 +15,8 @@ To write a Python program using OpenCV to capture an image from the webcam and p
 
 ## 🛠️ Software Used
 
-- Anaconda – Python 3.7  
-- Jupyter Notebook / VS Code  
+- Anaconda – Python 3.14  
+- Jupyter Notebook 
 - OpenCV (`cv2`)  
 
 ---
