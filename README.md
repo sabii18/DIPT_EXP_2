@@ -51,39 +51,75 @@ Resize the frame and rotate it using OpenCV functions, then display the processe
 ## Code:
 
 ```python
+
 import cv2
+import matplotlib.pyplot as plt
+from IPython.display import clear_output
+import time
 cap = cv2.VideoCapture(0)
-if not cap.isOpened():
-    print("Cannot Open WebCam")
-    exit()
-while True:
-    ret, frame = cap.read()
-
-    if not ret:
-        print("Can't Capture Frame")
-        break
-
-    cv2.imwrite("Captured_frame.jpg",frame)
-    
-    cv2.imshow("Live Video",frame)
-
-    resized = cv2.resize(frame,(640,480))
-    cv2.imshow("Resized Video",resized)
-
-    rotated = cv2.rotate(frame,cv2.ROTATE_90_CLOCKWISE)
-    cv2.imshow("Rotated Video",rotated)
-    
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+ret, frame = cap.read()
+if ret:
+    cv2.imwrite("captured_frame.jpg", frame)
 cap.release()
-cv2.destroyAllWindows()
-```
+captured_image = cv2.imread('captured_frame.jpg')
+plt.imshow(captured_image[:,:,::-1])
+plt.title('Captured Frame')
+plt.axis('off')
+plt.show()
+cap = cv2.VideoCapture(0)
 
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release()
+cap = cv2.VideoCapture(0)
+
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    resized_frame = cv2.resize(frame, (100, 150))  # Resize to 320x240
+    frame_rgb = cv2.cvtColor(resized_frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release()
+
+cap = cv2.VideoCapture(0)
+
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    rotated_frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+    frame_rgb = cv2.cvtColor(rotated_frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release()
+```
 ## Output
 
-<img width="1338" height="793" alt="image" src="https://github.com/user-attachments/assets/1f123337-b03f-4a4f-be49-945be5d8fc00" />
+<img width="741" height="485" alt="image" src="https://github.com/user-attachments/assets/b437f1eb-c3d7-404e-b80e-8805c55d6107" />
 
-<img width="1917" height="1018" alt="image" src="https://github.com/user-attachments/assets/e820649f-e373-4f9f-b61d-90f742d8321e" />
+<img width="342" height="486" alt="image" src="https://github.com/user-attachments/assets/8ff0b5e0-5fa7-4eb2-ada8-8418d51626cf" />
+
+<img width="431" height="497" alt="image" src="https://github.com/user-attachments/assets/b867e3e8-97a2-467c-b7c7-22878a12f902" />
+
 
 
 ---
