@@ -67,7 +67,8 @@ plt.title('Captured Frame')
 plt.axis('off')
 plt.show()
 cap = cv2.VideoCapture(0)
-
+```
+```python
 for i in range(50):
     ret, frame = cap.read()
     if not ret:
@@ -81,7 +82,8 @@ for i in range(50):
 
 cap.release()
 cap = cv2.VideoCapture(0)
-
+```
+```python
 for i in range(50):
     ret, frame = cap.read()
     if not ret:
